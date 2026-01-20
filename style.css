@@ -1,0 +1,49 @@
+:root {
+    --wa-teal: #008069;
+    --wa-bg: #e5ddd5;
+    --wa-sent: #dcf8c6;
+    --wa-received: #ffffff;
+    --sidebar-bg: #ffffff;
+    --header-bg: #f0f2f5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background: #d1d7db; height: 100vh; overflow: hidden; }
+
+.hidden { display: none !important; }
+
+/* Auth Layout */
+.auth-overlay { position: fixed; inset: 0; background: #f0f2f5; display: flex; align-items: center; justify-content: center; z-index: 100; }
+.auth-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 350px; text-align: center; }
+.auth-card input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
+.auth-card button { width: 100%; padding: 12px; background: var(--wa-teal); color: white; border: none; cursor: pointer; border-radius: 5px; }
+
+/* Main App Layout */
+.app-container { display: flex; width: 100%; height: 100vh; background: white; }
+.sidebar { width: 30%; min-width: 300px; border-right: 1px solid #ddd; display: flex; flex-direction: column; }
+.chat-window { flex: 1; display: flex; flex-direction: column; background: var(--wa-bg); position: relative; }
+
+.ui-header { height: 60px; background: var(--header-bg); display: flex; align-items: center; padding: 0 15px; justify-content: space-between; }
+.avatar { width: 40px; height: 40px; background: #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; }
+
+.search-container { padding: 10px; background: #fff; }
+.search-container input { width: 100%; padding: 8px; border: none; background: #f0f2f5; border-radius: 20px; outline: none; }
+
+/* Messaging */
+.message-area { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.msg { max-width: 70%; padding: 8px 12px; border-radius: 8px; font-size: 14px; position: relative; box-shadow: 0 1px 1px rgba(0,0,0,0.1); animation: fadeIn 0.2s ease; }
+.sent { align-self: flex-end; background: var(--wa-sent); }
+.received { align-self: flex-start; background: var(--wa-received); }
+.msg-time { font-size: 10px; color: #888; display: block; text-align: right; margin-top: 4px; }
+
+.input-area { padding: 10px; background: var(--header-bg); display: flex; align-items: center; gap: 10px; }
+.input-area input[type="text"] { flex: 1; padding: 10px; border: none; border-radius: 20px; outline: none; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar { width: 100%; }
+    .chat-window { position: absolute; width: 100%; height: 100%; left: 100%; transition: 0.3s; }
+    .chat-window.active { left: 0; }
+    .mobile-only { display: block; }
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }

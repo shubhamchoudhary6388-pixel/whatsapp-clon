@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Clone - Vanilla JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="auth-screen" class="auth-overlay">
+        <div class="auth-card">
+            <h2 id="auth-title">Login</h2>
+            <p id="auth-error" class="error-msg"></p>
+            <input type="text" id="reg-name" placeholder="Full Name" class="hidden">
+            <input type="text" id="auth-userid" placeholder="User ID (Unique)">
+            <input type="password" id="auth-password" placeholder="Password">
+            <button id="auth-btn">Login</button>
+            <p id="toggle-auth">New user? <span>Register here</span></p>
+        </div>
+    </div>
+
+    <div id="app-container" class="app-container hidden">
+        <aside class="sidebar" id="sidebar">
+            <header class="ui-header">
+                <div class="user-profile">
+                    <div class="avatar" id="my-avatar">U</div>
+                    <span id="my-name">Me</span>
+                </div>
+                <button onclick="logout()" class="icon-btn">Logout</button>
+            </header>
+            
+            <div class="search-container">
+                <input type="text" id="user-search" placeholder="Search User ID to add...">
+            </div>
+
+            <div class="chat-list" id="chat-list">
+                </div>
+        </aside>
+
+        <main class="chat-window" id="chat-window">
+            <div id="no-chat-selected" class="empty-state">
+                <p>Select a user to start chatting</p>
+            </div>
+
+            <div id="active-chat-ui" class="hidden">
+                <header class="ui-header">
+                    <button id="back-btn" class="mobile-only">←</button>
+                    <div class="chat-details">
+                        <div class="avatar" id="chat-avatar">?</div>
+                        <span id="chat-with-name">User</span>
+                    </div>
+                </header>
+
+                <div class="message-area" id="message-area"></div>
+
+                <footer class="input-area">
+                    <input type="file" id="file-input" hidden>
+                    <button class="icon-btn" onclick="document.getElementById('file-input').click()">📎</button>
+                    <input type="text" id="msg-input" placeholder="Type a message...">
+                    <button id="send-btn" class="send-btn">➤</button>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
